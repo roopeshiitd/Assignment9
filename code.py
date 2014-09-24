@@ -1,5 +1,8 @@
 #!/usr/bin/python
-def mood(arr):
+#Author : Paranandi Roopesh
+#Entry No: 2014JTM2264
+
+def mood(arr):				#Writing a method to return the mood of the particular user
     max=arr[0]
     j=0
     for i in range(1,6):
@@ -22,14 +25,14 @@ def mood(arr):
         return "Angry"
     
 
-a=[0,0,0,0,0,0,0]
+a=[0,0,0,0,0,0,0]			#arrays to store the moods of the each user
 b=[0,0,0,0,0,0,0]
 e=[0,0,0,0,0,0,0]
 g=[0,0,0,0,0,0,0]
 c=[0,0,0,0,0,0,0]
 percentage=[0,0,0,0,0,0,0]
 for line in open('/home/paranandi/Assignment9/content.txt','r'):
-    user = line[0];
+    user = line[0];			#updating the information about the moods of the user through reading from a file
     if (user=="A"):
         for word in line.split():
             if ((word==":)") or (word==":D")):
@@ -46,7 +49,7 @@ for line in open('/home/paranandi/Assignment9/content.txt','r'):
                 a[5]=a[5]+1
             if ((word=="x-(") or (word==">_<")):
                 a[6]=a[6]+1
-    if (user=="B"):
+    if (user=="B"):			#reading the contents of the file line by line and then word by word
        for word in line.split():
             if ((word==":)") or (word==":D")):
                 b[0]=b[0]+1
@@ -110,20 +113,20 @@ for line in open('/home/paranandi/Assignment9/content.txt','r'):
                 c[5]=c[5]+1
             if ((word=="x-(") or (word==">_<")):
                 c[6]=c[6]+1
-mooda=mood(a)
+mooda=mood(a)				#storing the moods of each user
 moodb=mood(b)
 moode=mood(e)
 moodg=mood(g)
 moodc=mood(c)
 total=0.0
     
-for i in range(0,6):
+for i in range(0,6):			#calculating the percentage of the mood among all the users
     percentage[i]=a[i]+b[i]+e[i]+g[i]+c[i]
     total=total+percentage[i]
 for i in range(0,6):
-    percentage[i]=percentage[i]/total
+    percentage[i]=percentage[i]/total	
         
-f=open('/home/paranandi/Assignment9/output.txt','w')
+f=open('/home/paranandi/Assignment9/output.txt','w')	#Writing the output of the information into a file
 f.write("A : "+mooda+" \n"+"B : "+moodb+" \n"+"E : "+moode+" \n"+"G : "+moodg+" \n"+"C : "+moodc+" \n"+"----------------------------"+"\n")
 f.write("Happy \t\t:\t"+str(percentage[0]*100)+"%\n"+"Sad \t\t:\t"+str(percentage[1]*100)+"%\n"+"Sarcastic \t:\t"+str(percentage[2]*100)+"%\n"+"Surprised \t:\t"+str(percentage[3]*100)+"%\n"+"Crook \t\t:\t"+str(percentage[4]*100)+"%\n"+"Neutral \t:\t"+str(percentage[5]*100)+"%\n"+"Angry \t\t:\t"+str(percentage[6]*100)+"%\n")
 
